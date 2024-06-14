@@ -22,16 +22,35 @@ Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de e
 
 En esta primera sesión te orientaremos en la creación de un repositorio para que puedas alojar tu proyecto y lo presentes en la sesión final del módulo. 
 
-:clock: Tiempo estimado: 60 minutos
+⏰ Tiempo estimado: *60 minutos*
 
-Realiza las siguientes actividades con el apoyo de la experta asignada al módulo:
+**Paso 1: Configura una cuenta en GitHub en caso de que no tengas una**
 
-1. Configura una cuenta en GitHub en caso de que no tengas una.
+<details><summary>Instrucciones</summary>
+</details>
 
-2. Instala Git en tu computadora
+**Paso 2: Instala Git en tu computadora**
 
-3. Crea una estructura de carpetas en tu equipo.
+<details><summary>Instrucciones</summary>
+</details>
 
-4. Añade un archivo `README.md` en blanco.
+**Paso 3: Crea una estructura de carpetas en tu equipo**
 
-5. Empuja (`push`) los datos al repositorio de GitHub
+<details><summary>Instrucciones</summary>
+</details>
+
+**Paso 4: Añade un archivo `README.md` en blanco**
+
+<details><summary>Instrucciones</summary>
+</details>
+
+**Paso 5: Empuja (`push`) los datos al repositorio de GitHub**
+
+<details><summary>Instrucciones</summary>
+</details>
+
+#### :rocket: Tu avance después de esta sesión:
+
+<progress max="100" value="9">9%</progress>
+
+- [x] Creación de un repositorio 
