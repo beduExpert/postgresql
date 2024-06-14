@@ -98,11 +98,23 @@ En esta primera sesión te orientaremos en la creación de un repositorio para q
 
 Configura en tu equipo una estructura de carpetas, donde desees colocar el proyecto. En esta estructura se irán creando las soluciones a las distintas actividades que realizaremos a lo largo del módulo, de momento, la estructura de tu carpeta queda libre, pero poco a poco iremos estandarizando su contenido.
 
+<br>
 </details>
 
 **Paso 4: Añade un archivo `README.md` en blanco**
 
 <details><summary>Instrucciones</summary>
+<br>
+
+Dentro de la siguiente [liga](plantilla/README.md) encontrarás un documento en formato **Markdown** puedes utilizarlo para ir generando una pequeña documentación sobre tu proyecto. De momento basta con que coloques datos básicos y lo iremos completando poco a poco a lo largo del resto de sesiones.
+
+Adicionalmente te dejamos la documentación de **Markdown** para que aprendas un poco más de este lenguaje de marcado:
+
+🔗 [Sintaxis de escritura y formato básicos
+](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+
+<br>
 </details>
 
 **Paso 5: Empuja (`push`) los datos al repositorio de GitHub**
