@@ -87,11 +87,17 @@ En esta primera sesión te orientaremos en la creación de un repositorio para q
 
    ![img](imagenes/img12.png)
 
+<br>
+
 </details>
 
 **Paso 3: Crea una estructura de carpetas en tu equipo**
 
 <details><summary>Instrucciones</summary>
+<br>
+
+Configura en tu equipo una estructura de carpetas, donde desees colocar el proyecto. En esta estructura se irán creando las soluciones a las distintas actividades que realizaremos a lo largo del módulo, de momento, la estructura de tu carpeta queda libre, pero poco a poco iremos estandarizando su contenido.
+
 </details>
 
 **Paso 4: Añade un archivo `README.md` en blanco**
