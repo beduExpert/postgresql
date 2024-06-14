@@ -49,8 +49,6 @@ En esta primera sesión te orientaremos en la creación de un repositorio para q
 <details><summary>Instrucciones</summary>
 </details>
 
-#### :rocket: Tu avance después de esta sesión:
-
-<progress max="100" value="9">9%</progress>
+#### :rocket: Tu avance: <progress max="100" value="9">9%</progress>
 
 - [x] Creación de un repositorio 
