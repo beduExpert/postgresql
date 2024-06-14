@@ -77,6 +77,16 @@ En esta primera sesión te orientaremos en la creación de un repositorio para q
 
 <details><summary>Instrucciones</summary>
 
+<br>
+
+1. Ingresa a la página [https://www.git-scm.com/downloads](https://www.git-scm.com/downloads).
+
+   ![img](imagenes/img11.png)
+
+2. Elige tu sistema operativo y sigue el tutorial según corresponda.
+
+   ![img](imagenes/img12.png)
+
 </details>
 
 **Paso 3: Crea una estructura de carpetas en tu equipo**
