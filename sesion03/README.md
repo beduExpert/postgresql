@@ -130,6 +130,133 @@ Instalar PostgreSQL 16 y pgAdmin4 en un sistema operativo Windows de manera corr
 <summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Comandos básicos PSQL</strong><br/></summary>
 <br/>
 
+#### Objetivo:
+Aprender a usar PSQL para gestionar bases de datos PostgreSQL mediante comandos básicos y avanzados.
+
+#### Materiales necesarios:
+- PostgreSQL 16 instalado en tu sistema Windows.
+- Acceso a una terminal o línea de comandos
+- Conexión a Internet (opcional para consultar documentación).
+
+#### Tiempo estimado:
+45-60 minutos.
+
+#### Instrucciones paso a paso
+
+1. Abril la terminal o línea de comandos
+   - Abre `cmd` o `PowerShell`
+
+2. Conectar a PostgreSQL con PSQL
+   - Ejecuta el siguiente comando reemplazando `username` con tu nombre de usuario PostgreSQL y `dbname` con el nombre de la base de datos a la que quieras conectarte:
+      ```sql
+      psql -U username -d dbname
+      ```
+
+   - Si estás utilizando la base de datos `postgres` y el usuario `postgres`, el comando sería:
+      ```sql
+      psql -U postgres -d postgres
+      ```
+
+3. Ingresar la contraseña:
+   - Se te pedirá que ingreses la contraseña del usuario `postgres`. Escríbela y presiona `Enter`.
+
+4. Listar bases de datos:
+   - Para ver todas las bases de datos disponibles, usa:
+      ```sql
+      \l
+      ```
+5. Conectarse a una base de datos:
+   - Para cambiar a otra base de datos, usa:
+     ```sql
+     \c dbname
+     ```
+
+6. Listar tablas:
+   - Para ver todas las tablas en la base de datos actual, usa:
+      ```sql
+      \dt
+      ```
+
+7. Salir de PSQL:
+   - Para salir del cliente PSQL usa:
+      ```sql
+      \q
+      ```
+
+8. Crear una tabla:
+   - Crear una tabla simple llamada `empleados`:
+      ```sql
+      CREATE TABLE empleados (
+         id SERIAL PRIMARY KEY,
+         nombre VARCHAR(100),
+         puesto VARCHAR(100),
+         salario NUMERIC
+      );
+      ```
+
+9. Insertar datos en la tabla `empleados`:
+   ```sql
+   INSERT INTO empleados (nombre, puesto, salario) VALUES 
+   ('Juan Pérez', 'Gerente', 50000),
+   ('Ana Gómez', 'Desarrollador', 40000),
+   ('Luis García', 'Diseñador', 35000);
+   ```
+
+10. Consultar todos los registros de la tabla `empleados`:
+   ```sql
+   SELECT * FROM empleados;
+   ```
+
+11. Actualizar el salario de un empleado:
+   ```sql
+   UPDATE empleados SET salario = 45000 WHERE nombre = 'Ana Gómez';
+   ```
+
+12. Eliminar un registro de la tabla `empleados`:
+   ```sql
+   DELETE FROM empleados WHERE nombre = 'Luis Garcia';
+   ```
+
+13. Ver la estructura de la tabla `empleados`:
+   ```sql
+   \d empleados
+   ```
+
+14. Exportar los datos de `empleados`a un archivo CSV:
+   ```sql
+    \COPY empleados TO 'empleados.csv' CSV HEADER;
+   ```
+
+15. Importar datos desde un archivo CSV a la tabla `empleados`:
+   ```sql
+   \COPY empleados FROM 'empleados.csv' CSV HEADER;
+   ```
+
+16. Iniciar una transacción, realizar cambios y confirmar:
+   ```sql
+   BEGIN;
+   INSERT INTO empleados (nombre, puesto, salario) VALUES ('Carlos Ruiz', 'Analista', 42000);
+   COMMIT;
+   ```
+
+17. Obtener ayuda sobre los comandos disponibles:
+   ```sql
+   \?
+   ```
+
+18. Ver las variables de configuración actuales:
+   ```sql
+   SHOW ALL;
+   ``
+
+19. Ejecutar comandos SQL desde un archivo:
+   ```sql
+   \i ruta/al/archivo.sql
+   ```
+
+#### Conclusión
+¡Felicidades! Ahora sabes cómo utilizar PSQL para gestionar bases de datos PostgreSQL. Has aprendido a conectarte, navegar, crear tablas, insertar y consultar datos, y utilizar comandos avanzados. Practica estos comandos regularmente para mejorar tu habilidad con PSQL y gestionar tus bases de datos de manera eficiente.
+
 </details>
 
 
