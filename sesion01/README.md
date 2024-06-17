@@ -129,7 +129,7 @@ Una vez configurado el *token*, usa la terminal de Git para dirigirte a la ruta 
 > git push origin main
 ```
 
-Una vez hecho esto, puedes ingresar 
+Una vez hecho esto, puedes ingresar a GitHub y ver tus cambios.
 
 
 ---
