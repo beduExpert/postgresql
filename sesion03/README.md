@@ -431,4 +431,6 @@ En esta tercera sesión te orientaremos en la configuración del entorno SQL par
 
 1. Replicando el hands-on que revisamos durante la sesión, asegurate de tener todo configurado para cargar los datos de tu base. No te preocupes mucho por el diseño de momento, ya lo mejoraremos en la siguiente sesión.
 
+</details>
+
 [`< Regresar`](../README.md)
