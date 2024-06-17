@@ -259,6 +259,147 @@ Aprender a usar PSQL para gestionar bases de datos PostgreSQL mediante comandos 
 
 </details>
 
+<details>
+<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Uso básico de pgAdmin 4</strong><br/></summary>
+<br/>
+
+#### Objetivo
+Aprender a usar pgAdmin 4 para gestionar bases de datos PostgreSQL mediante la interfaz gráfica.
+
+#### Materiales Necesarios
+- PostgreSQL 16 y pgAdmin 4 instalados en tu sistema Windows
+- Conexión a Internet (opcional para consultar documentación)
+
+#### Tiempo Estimado:
+45-60 minutos.
+
+#### Instrucciones pasos a paso
+
+1. Abrir pgAdmin 4:
+   - Inicia pgAdmin 4 desde el menú de inicio de Windows.
+  
+2. Conectarse al servidor PostgreSQL:
+   - En el panel izquierdo, haz clic derecho en "Servers" y selecciona "Create" -> "Server...".
+   - En la pestaña "General", ingresa un nombre para el servidor (por ejemplo, `PostgreSQL16`).
+   - En la pestaña "Connection",, ingresa los detalles de conexión:
+      - **Host name/address: `localhost`**
+      - **Port: `5432`**
+      - **Username: `postgres`**
+      - **Password:** ingresa la contraseña que configuraste durante la instalación.
+   - Haz clic en "Save" para conectar.
+  
+3. Crear una nueva base de datos:
+   - En el panel izquierdo, expande el servidor que acabas de crear.
+   - Haz clic derecho en "Databases" y selecciona "Create" -> "Database...".
+   - En la ventana emergente, ingresa el nombre de la base de datos (por ejemplo `empresa`).
+   - Haz clic en "Save".
+  
+4. Crear tabla `departamentos`:
+   - Expande la base de datos `empresa`, luego expande "Schemas" -> "public" -> "Tables".
+   - Haz clic derecho en "Tables" y  selecciona "Create" -> "Table..."
+   - En la pestaña "General", ingresa el nombre de la tabla (`departamentos`).
+   - En la pestaña "Columns", define las columnas:
+      - **id**: SERIAL, Primary Key.
+      - **nombre:** VARCHAR(100), NOT NULL.
+      - **ubicacion:** VARCHAR(100).
+   - Haz clic en "Save".
+  
+5. Crear tabla `empleados`:
+   - Repite los pasos anteriores para crear la tabla `empleados` con las siguientes columnas:
+      - **id:** SERIAL, Primary Key.
+      - **nombre:** VARCHAR(100), Not NULL.
+      - **puesto:** VARCHAR(100), Not NULL.
+      - **salario:** NUMERIC, Check (salario > 0).
+      - **departamento_id**: INTEGER, Foreign Key (References departamentosd(id)).
+    
+6. Insertar Datos en `departamentos`:
+   - En el panel izquierdo, expander la tabla `departamentos`.
+   - Haz clic derecho en "Query Tool" y usa el siguiente comando para insertar datos:
+      ```sql
+      INSERT INTO departamentos (nombre, ubicacion) VALUES 
+      ('Recursos Humanos', 'Edificio A'),
+      ('Tecnología', 'Edificio B'),
+      ('Ventas', 'Edificio C');
+      ```
+
+7. Insertar Datos en `empleados`:
+   - Repite el proceso en la tabla `empleados` con el siguiente comando:
+      ```sql
+      INSERT INTO empleados (nombre, puesto, salario, departamento_id) VALUES 
+      ('Juan Pérez', 'Gerente', 50000, 1),
+      ('Ana Gómez', 'Desarrollador', 40000, 2),
+      ('Luis García', 'Vendedor', 35000, 3);
+      ```
+
+8. Consultar datos de `empleados`:
+   - Abre la "Query Tool" para la tabla `empleados`y ejecuta el siguiente comando:
+      ```sql
+      SELECT * FROM empleados;
+      ```
+9. Unir tablas `empleados` y `departamentos`:
+   - En la "Query Tool", ejecuta el siguiente comando para ver los empleados junto con sus departamentos:
+      ```sql
+      SELECT e.nombre AS empleado, e.puesto, e.salario, d.nombre AS departamento, d.ubicacion
+      FROM empleados e
+      JOIN departamentos d ON e.departamento_id = d.id;
+      ```
+
+10. Agregar una columna a `empleados`:
+   - En la tabla `empleados`, haz clic derecho y selecciona "Properties".
+   - En la pestaña "Columns", agrega una nueva columna `fecha_contractacion` de tipo `DATE`.
+   - Haz clic en "Save".
+
+11. Actualizar datos de `empleados`:
+   - En la "Query Tool", ejecuta los siguientes comandos para actualizar las fechas de contratación:
+      ```sql
+      UPDATE empleados SET fecha_contratacion = '2023-01-15' WHERE nombre = 'Juan Pérez';
+      UPDATE empleados SET fecha_contratacion = '2023-02-20' WHERE nombre = 'Ana Gómez';
+      UPDATE empleados SET fecha_contratacion = '2023-03-05' WHERE nombre = 'Luis García';
+      ```
+
+12. Iniciar una transacción:
+   - En la "Query Tool", ejecuta el siguiente comando: 
+      ```sql
+      BEGIN;
+      ```
+
+13. Realizar operaciones:
+   - Inserta un nuevo empleado:
+      ```sql
+      INSERT INTO empleados (nombre, puesto, salario, departamento_id, fecha_contratacion) VALUES ('Carlos Ruiz', 'Analista', 42000, 1, '2023-04-01');
+      ```
+
+   - Si decides deshacer la transacción:
+      ```sql
+      ROLLBACK;
+      ```
+
+14. Configrmar transacción:
+   - Si todo está correcto:
+      ```sql
+      COMMIT;
+      ```
+
+15. Crear una vista para empleados y departamentos:
+   - En la "Query Tool", ejecuta el siguiente comando:
+      ```sql
+      CREATE VIEW vista_empleados_departamentos AS
+      SELECT e.nombre AS empleado, e.puesto, e.salario, d.nombre AS departamento, d.ubicacion
+      FROM empleados e
+      JOIN departamentos d ON e.departamento_id = d.id;
+      ```
+
+16. Consultar la vista:
+   - Consulta la vista creada:
+      ```sql
+      SELECT * FROM vista_empleados_departamentos;
+      ```
+
+#### Conclusión:
+¡Felicidades! Ahora sabes cómo utilizar pgAdmin 4 para gestionar bases de datos PostgreSQL. Has aprendido a conectarte, crear bases de datos y tablas, insertar y consultar datos, modificar el diseño de la base de datos y utilizar transacciones para asegurar la integridad. Practica estos pasos regularmente para mejorar tu habilidad con pgAdmin 4 y gestionar tus bases de datos de manera eficiente.
+
+</details>
+
 
 ### 🤓 Proyecto Modular
 
