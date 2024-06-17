@@ -16,7 +16,7 @@ En este repositorio colocaremos todo el material necesario para ir construyendo 
 ## 📚 Contenido
 
 - [Sesión 01: Introducción a PostgreSQL](sesion01/README.md)
-- Sesión 02: Arquitectura y Componentes Internos de PostgreSQL
+- [Sesión 02: Arquitectura y Componentes Internos de PostgreSQL](sesion02/README.md)
 - Sesión 03: Herramientas y Utilidades (PSQL & PgAdmin 4)
 - Sesión 04: Diseño de Bases de Datos en PostgreSQL
 - Sesión 05: Gestión de Usuarios, Seguridad y Privilegios
