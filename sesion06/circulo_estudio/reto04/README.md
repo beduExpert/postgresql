@@ -180,7 +180,5 @@ Te sugerimos seguir los siguientes pasos para llegar a la solución. Sin embargo
 > </details>
 ---
 
-**¡Con esto finalizamos nuestro círculo de estudio!** :clap:
 
-
-[`Anterior`](../reto03/README.md) | [`Siguiente`](../../../sesion06/README.md)
+[`Anterior`](../reto03/README.md) | [`Siguiente`](../reto05/README.md)

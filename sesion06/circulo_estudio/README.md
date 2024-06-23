@@ -44,6 +44,8 @@ Los retos que deberás cumplir para completar este proyecto son:
    - Usar agrupamientos para obtener los promedios de cada rubro y promedios finales.
    - Crear una vista con el formato de la tabla final para no almacenar los datos y que se alojen en una *tabla virtual*.
 
-Te daremos **120 MINUTOS** para que intentes resolver estos ejercicios. Puedes seguir el material del repositorio para resolverlo, pero si realmente quieres medir cuanto has aprendido, te sugerimos intentarlo antes de ver las respuestas.
+5. [**`Reto 05`**](reto05/README.md): Configura un usuario adicional a `postgres` llamado `alumno` que pueda consultar únicamente el formato de calificaciones pero no las tablas que se usan para construirlo. Para ello tendrás que darle permisos de lectura únicamente a la vista que creaste en el punto anterior.
+
+Te daremos **150 MINUTOS** para que intentes resolver estos ejercicios. Puedes seguir el material del repositorio para resolverlo, pero si realmente quieres medir cuanto has aprendido, te sugerimos intentarlo antes de ver las respuestas.
 
 [`Anterior`](../README.md) | [`Siguiente`](reto01/README.md)
