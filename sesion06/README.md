@@ -22,7 +22,8 @@ En **PostgreSQL**, existen dos tipos principales de copias de seguridad: la copi
 
 - [6.1. Copia de Seguridad Lógica](tema01/README.md)
 - [6.2. Copia de Seguridad Física](tema02/README.md)
-- [6.3. Restauración de Datos](tema03/README.md)
-- [6.4. Etrategias de Recuperación](tema04/README.md)
+- [6.3. Restauración de Datos](tema03/ejemplo02/README.md)
+- [6.4. Estrategias de Recuperación](tema04/README.md)
+- [6.5. Conclusión](tema05/README.md)
 
 [`Anterior`](../README.md) | [`Siguiente`](circulo_estudio/README.md)
