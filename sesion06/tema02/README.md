@@ -1,6 +1,6 @@
 [`PostgreSQL Avanzado`](../../README.md) > [`Sesión 06`](../README.md)
 
-### 6.2. Copia de Seguridad Física
+### 6.3. Restauración de Datos
 
 <img src="../imagenes/img13.jpg" width="45%" align="right" hspace=30>
 
@@ -33,4 +33,4 @@
 
 <br/>
 
-[`Anterior`](../tema01/ejemplo01/README.md) | [`Siguiente`](../tema03/README.md)
+[`Anterior`](../tema01/ejemplo01/README.md) | [`Siguiente`](../tema03/ejemplo02/README.md)
