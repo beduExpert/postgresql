@@ -1,0 +1,546 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+
+-- Started on 2024-06-23 01:22:56 CST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 215 (class 1259 OID 16389)
+-- Name: Alumnos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Alumnos" (
+    matricula text NOT NULL,
+    nombre text,
+    apellido text
+);
+
+
+ALTER TABLE public."Alumnos" OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16406)
+-- Name: Examenes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Examenes" (
+    id_examen integer NOT NULL,
+    matricula text NOT NULL,
+    numero_examen integer NOT NULL,
+    calificacion double precision NOT NULL
+);
+
+
+ALTER TABLE public."Examenes" OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 16405)
+-- Name: Examenes_id_examen_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Examenes_id_examen_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public."Examenes_id_examen_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3462 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: Examenes_id_examen_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Examenes_id_examen_seq" OWNED BY public."Examenes".id_examen;
+
+
+--
+-- TOC entry 217 (class 1259 OID 16397)
+-- Name: Tareas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Tareas" (
+    id_tarea integer NOT NULL,
+    matricula text NOT NULL,
+    numero_tarea bigint NOT NULL,
+    calificacion double precision NOT NULL
+);
+
+
+ALTER TABLE public."Tareas" OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 16396)
+-- Name: Tareas_id_tarea_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Tareas_id_tarea_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public."Tareas_id_tarea_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3463 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: Tareas_id_tarea_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Tareas_id_tarea_seq" OWNED BY public."Tareas".id_tarea;
+
+
+--
+-- TOC entry 220 (class 1259 OID 16424)
+-- Name: calificaciones; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.calificaciones AS
+ SELECT tareas.matricula,
+    tareas.nombre,
+    tareas.apellido,
+    examenes.examen_1,
+    examenes.examen_2,
+    ((examenes.examen_1 + examenes.examen_2) / (2)::double precision) AS promedio_examenes,
+    tareas.tarea_1,
+    tareas.tarea_2,
+    ((tareas.tarea_1 + tareas.tarea_2) / (2)::double precision) AS promedio_tareas,
+    ((((examenes.examen_1 + examenes.examen_2) / (2)::double precision) * (0.6)::double precision) + (((tareas.tarea_1 + tareas.tarea_2) / (2)::double precision) * (0.4)::double precision)) AS promedio_final
+   FROM (( SELECT a.matricula,
+            a.nombre,
+            a.apellido,
+            sum(
+                CASE
+                    WHEN (t.numero_tarea = 1) THEN t.calificacion
+                    ELSE (0)::double precision
+                END) AS tarea_1,
+            sum(
+                CASE
+                    WHEN (t.numero_tarea = 2) THEN t.calificacion
+                    ELSE (0)::double precision
+                END) AS tarea_2
+           FROM (public."Alumnos" a
+             JOIN public."Tareas" t ON ((a.matricula = t.matricula)))
+          GROUP BY a.matricula, a.nombre, a.apellido) tareas
+     JOIN ( SELECT a.matricula,
+            a.nombre,
+            a.apellido,
+            sum(
+                CASE
+                    WHEN (e.numero_examen = 1) THEN e.calificacion
+                    ELSE (0)::double precision
+                END) AS examen_1,
+            sum(
+                CASE
+                    WHEN (e.numero_examen = 2) THEN e.calificacion
+                    ELSE (0)::double precision
+                END) AS examen_2
+           FROM (public."Alumnos" a
+             JOIN public."Examenes" e ON ((a.matricula = e.matricula)))
+          GROUP BY a.matricula, a.nombre, a.apellido) examenes ON ((tareas.matricula = examenes.matricula)))
+  ORDER BY tareas.matricula;
+
+
+ALTER VIEW public.calificaciones OWNER TO postgres;
+
+--
+-- TOC entry 3299 (class 2604 OID 16409)
+-- Name: Examenes id_examen; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Examenes" ALTER COLUMN id_examen SET DEFAULT nextval('public."Examenes_id_examen_seq"'::regclass);
+
+
+--
+-- TOC entry 3298 (class 2604 OID 16400)
+-- Name: Tareas id_tarea; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Tareas" ALTER COLUMN id_tarea SET DEFAULT nextval('public."Tareas_id_tarea_seq"'::regclass);
+
+
+--
+-- TOC entry 3452 (class 0 OID 16389)
+-- Dependencies: 215
+-- Data for Name: Alumnos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Alumnos" (matricula, nombre, apellido) FROM stdin;
+matricula	nombre	apellido
+200-83-2116	Jo-anne	Stroyan
+868-94-8737	Sadie	Scarman
+581-27-3652	Chicky	Glison
+835-46-6917	Shelia	Metrick
+879-97-3389	Randolf	Shillabeer
+296-21-5125	Clementius	Izakoff
+503-58-2038	Nanny	Ballentime
+151-32-9919	Shirline	Verrall
+645-18-3376	Corbett	Perelli
+381-60-6132	Ahmad	Pettigree
+242-13-8144	Cirilo	Muat
+186-04-6624	Delmar	Lightowlers
+326-05-3673	Giraud	Vashchenko
+379-42-2025	Fidelio	Gyenes
+656-95-8852	Raphaela	Perroni
+526-94-8433	Paulette	Fortman
+315-16-1936	Tuckie	Derrick
+836-74-0883	Melinda	Pethybridge
+439-50-7022	Zebulen	Amori
+151-81-8515	Rhodie	Feige
+757-99-4115	Sergio	Boule
+754-22-1285	Joanie	Laidler
+604-36-3056	Cal	Wondraschek
+842-56-1751	Dasi	Clooney
+590-66-5544	Pammi	Rohan
+696-82-8942	Blaire	Harsnipe
+466-05-6334	Maximo	Lints
+277-53-2804	Joceline	Unger
+809-21-0009	Carney	Spreadbury
+638-10-4031	Averil	Brogden
+503-74-6569	Margaretta	Rickersey
+849-72-2179	Kinny	Burdin
+124-53-6655	Cymbre	Niccolls
+134-85-2794	Damien	Roncelli
+374-19-1385	Jobyna	Poundford
+565-97-3285	Cyndi	Anthona
+259-95-1992	Winifield	Habble
+266-08-4607	Gael	Laverenz
+143-27-6050	Lani	Lody
+206-65-2963	Anissa	Goodanew
+868-75-7343	Miguela	Mundle
+435-42-0764	Man	Luckes
+866-20-8803	Kristin	Tschursch
+665-27-9937	Elmo	Claasen
+833-20-9362	Crissie	Kubica
+515-02-5887	Farrel	Muskett
+695-09-9763	Thibaut	Zannolli
+436-83-2294	Judy	Gayforth
+846-25-6423	Farlie	Vasic
+253-23-8123	Geoffry	Menis
+\.
+
+
+--
+-- TOC entry 3456 (class 0 OID 16406)
+-- Dependencies: 219
+-- Data for Name: Examenes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Examenes" (id_examen, matricula, numero_examen, calificacion) FROM stdin;
+1	200-83-2116	1	2.66
+2	868-94-8737	1	6.01
+3	581-27-3652	1	1.43
+4	835-46-6917	1	6.9
+5	879-97-3389	1	9.42
+6	296-21-5125	1	6.33
+7	503-58-2038	1	4.1
+8	151-32-9919	1	9.81
+9	645-18-3376	1	4.35
+10	381-60-6132	1	2.02
+11	242-13-8144	1	1.64
+12	186-04-6624	1	1.31
+13	326-05-3673	1	2.22
+14	379-42-2025	1	3.92
+15	656-95-8852	1	0.16
+16	526-94-8433	1	6.1
+17	315-16-1936	1	7.47
+18	836-74-0883	1	2.37
+19	439-50-7022	1	6.86
+20	151-81-8515	1	0.17
+21	757-99-4115	1	7.56
+22	754-22-1285	1	6.81
+23	604-36-3056	1	4.13
+24	842-56-1751	1	6.03
+25	590-66-5544	1	8.51
+26	696-82-8942	1	5.59
+27	466-05-6334	1	7.54
+28	277-53-2804	1	5.92
+29	809-21-0009	1	2.25
+30	638-10-4031	1	0.98
+31	503-74-6569	1	6.7
+32	849-72-2179	1	9.78
+33	124-53-6655	1	7.04
+34	134-85-2794	1	5.72
+35	374-19-1385	1	5.48
+36	565-97-3285	1	4.22
+37	259-95-1992	1	8.27
+38	266-08-4607	1	8.3
+39	143-27-6050	1	1.04
+40	206-65-2963	1	9.6
+41	868-75-7343	1	9.61
+42	435-42-0764	1	6.78
+43	866-20-8803	1	9.81
+44	665-27-9937	1	2.19
+45	833-20-9362	1	2.55
+46	515-02-5887	1	4.26
+47	695-09-9763	1	7.87
+48	436-83-2294	1	0.93
+49	846-25-6423	1	7.83
+50	253-23-8123	1	8.16
+51	200-83-2116	2	1.69
+52	868-94-8737	2	4.56
+53	581-27-3652	2	1.22
+54	835-46-6917	2	3.68
+55	879-97-3389	2	9.44
+56	296-21-5125	2	2.27
+57	503-58-2038	2	2
+58	151-32-9919	2	1.79
+59	645-18-3376	2	7.59
+60	381-60-6132	2	5.54
+61	242-13-8144	2	8.04
+62	186-04-6624	2	8.93
+63	326-05-3673	2	1.48
+64	379-42-2025	2	8.68
+65	656-95-8852	2	6.46
+66	526-94-8433	2	6.39
+67	315-16-1936	2	0.5
+68	836-74-0883	2	1.23
+69	439-50-7022	2	7.61
+70	151-81-8515	2	5.12
+71	757-99-4115	2	0.76
+72	754-22-1285	2	1.98
+73	604-36-3056	2	4.35
+74	842-56-1751	2	5.31
+75	590-66-5544	2	4.2
+76	696-82-8942	2	8.93
+77	466-05-6334	2	5.83
+78	277-53-2804	2	0.03
+79	809-21-0009	2	5.45
+80	638-10-4031	2	0.2
+81	503-74-6569	2	1.67
+82	849-72-2179	2	1.09
+83	124-53-6655	2	3.23
+84	134-85-2794	2	3.86
+85	374-19-1385	2	9.78
+86	565-97-3285	2	4.3
+87	259-95-1992	2	4.74
+88	266-08-4607	2	6.88
+89	143-27-6050	2	8.48
+90	206-65-2963	2	6.97
+91	868-75-7343	2	2.67
+92	435-42-0764	2	9.57
+93	866-20-8803	2	9.32
+94	665-27-9937	2	5.42
+95	833-20-9362	2	8.65
+96	515-02-5887	2	6.92
+97	695-09-9763	2	3.32
+98	436-83-2294	2	5.29
+99	846-25-6423	2	6.1
+100	253-23-8123	2	7.98
+\.
+
+
+--
+-- TOC entry 3454 (class 0 OID 16397)
+-- Dependencies: 217
+-- Data for Name: Tareas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Tareas" (id_tarea, matricula, numero_tarea, calificacion) FROM stdin;
+1	200-83-2116	1	2.39
+2	868-94-8737	1	6.3
+3	581-27-3652	1	4.01
+4	835-46-6917	1	5.17
+5	879-97-3389	1	3.07
+6	296-21-5125	1	2.69
+7	503-58-2038	1	9.88
+8	151-32-9919	1	0.13
+9	645-18-3376	1	7.58
+10	381-60-6132	1	3.73
+11	242-13-8144	1	8.78
+12	186-04-6624	1	4.57
+13	326-05-3673	1	1.87
+14	379-42-2025	1	9.85
+15	656-95-8852	1	1.9
+16	526-94-8433	1	2.76
+17	315-16-1936	1	5.15
+18	836-74-0883	1	2.18
+19	439-50-7022	1	7.92
+20	151-81-8515	1	4.89
+21	757-99-4115	1	4.86
+22	754-22-1285	1	9.44
+23	604-36-3056	1	5.25
+24	842-56-1751	1	2.82
+25	590-66-5544	1	4.64
+26	696-82-8942	1	7.11
+27	466-05-6334	1	2.28
+28	277-53-2804	1	7.43
+29	809-21-0009	1	3.74
+30	638-10-4031	1	9.66
+31	503-74-6569	1	2.25
+32	849-72-2179	1	3.09
+33	124-53-6655	1	1.14
+34	134-85-2794	1	0.98
+35	374-19-1385	1	4.98
+36	565-97-3285	1	4.75
+37	259-95-1992	1	4.84
+38	266-08-4607	1	1.54
+39	143-27-6050	1	1.54
+40	206-65-2963	1	8.99
+41	868-75-7343	1	3.12
+42	435-42-0764	1	6.77
+43	866-20-8803	1	7.21
+44	665-27-9937	1	4
+45	833-20-9362	1	8.91
+46	515-02-5887	1	9.24
+47	695-09-9763	1	2.22
+48	436-83-2294	1	8.31
+49	846-25-6423	1	6.63
+50	253-23-8123	1	4.77
+51	200-83-2116	2	2.19
+52	868-94-8737	2	4.74
+53	581-27-3652	2	0.77
+54	835-46-6917	2	1.77
+55	879-97-3389	2	3.99
+56	296-21-5125	2	4.69
+57	503-58-2038	2	5.63
+58	151-32-9919	2	6.45
+59	645-18-3376	2	0.1
+60	381-60-6132	2	2.71
+61	242-13-8144	2	0.24
+62	186-04-6624	2	4.79
+63	326-05-3673	2	0.47
+64	379-42-2025	2	1.9
+65	656-95-8852	2	4.64
+66	526-94-8433	2	5.13
+67	315-16-1936	2	5.86
+68	836-74-0883	2	0.01
+69	439-50-7022	2	9.72
+70	151-81-8515	2	9.94
+71	757-99-4115	2	9.75
+72	754-22-1285	2	7.49
+73	604-36-3056	2	4.89
+74	842-56-1751	2	9.51
+75	590-66-5544	2	3.54
+76	696-82-8942	2	5.68
+77	466-05-6334	2	2.57
+78	277-53-2804	2	4.89
+79	809-21-0009	2	4.17
+80	638-10-4031	2	1.48
+81	503-74-6569	2	2.96
+82	849-72-2179	2	7.47
+83	124-53-6655	2	7.75
+84	134-85-2794	2	5.22
+85	374-19-1385	2	7.84
+86	565-97-3285	2	5.93
+87	259-95-1992	2	0.86
+88	266-08-4607	2	7.88
+89	143-27-6050	2	5.28
+90	206-65-2963	2	9.87
+91	868-75-7343	2	0.85
+92	435-42-0764	2	0.56
+93	866-20-8803	2	8.77
+94	665-27-9937	2	9.4
+95	833-20-9362	2	6.06
+96	515-02-5887	2	6.37
+97	695-09-9763	2	5.73
+98	436-83-2294	2	9.1
+99	846-25-6423	2	1.69
+100	253-23-8123	2	7.87
+\.
+
+
+--
+-- TOC entry 3465 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: Examenes_id_examen_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Examenes_id_examen_seq"', 1, false);
+
+
+--
+-- TOC entry 3466 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: Tareas_id_tarea_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Tareas_id_tarea_seq"', 1, false);
+
+
+--
+-- TOC entry 3301 (class 2606 OID 16395)
+-- Name: Alumnos Alumnos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Alumnos"
+    ADD CONSTRAINT "Alumnos_pkey" PRIMARY KEY (matricula);
+
+
+--
+-- TOC entry 3305 (class 2606 OID 16413)
+-- Name: Examenes Examenes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Examenes"
+    ADD CONSTRAINT "Examenes_pkey" PRIMARY KEY (id_examen);
+
+
+--
+-- TOC entry 3303 (class 2606 OID 16404)
+-- Name: Tareas Tareas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Tareas"
+    ADD CONSTRAINT "Tareas_pkey" PRIMARY KEY (id_tarea);
+
+
+--
+-- TOC entry 3307 (class 2606 OID 16419)
+-- Name: Examenes Examenes_matricula_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Examenes"
+    ADD CONSTRAINT "Examenes_matricula_fkey" FOREIGN KEY (matricula) REFERENCES public."Alumnos"(matricula) NOT VALID;
+
+
+--
+-- TOC entry 3306 (class 2606 OID 16414)
+-- Name: Tareas Tareas_matricula_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Tareas"
+    ADD CONSTRAINT "Tareas_matricula_fkey" FOREIGN KEY (matricula) REFERENCES public."Alumnos"(matricula) NOT VALID;
+
+
+--
+-- TOC entry 3464 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: TABLE calificaciones; Type: ACL; Schema: public; Owner: postgres
+--
+
+GRANT SELECT ON TABLE public.calificaciones TO alumno;
+
+
+-- Completed on 2024-06-23 01:22:56 CST
+
+--
+-- PostgreSQL database dump complete
+--
+

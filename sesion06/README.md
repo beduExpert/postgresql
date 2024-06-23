@@ -18,8 +18,11 @@ Implementar estategias efectivas de copia de seguridad y recuperación para gara
 
 ### 📚 Contenido
 
-- [1.1. Métodos de Backup](tema01/README.md)
-- [1.2. Restauración de Datos](tema02/README.md)
-- [1.3. Estrategias de Recuperación](tema03/README.md)
+En **PostgreSQL**, existen dos tipos principales de copias de seguridad: la copia de seguridad lógica y la copia de seguridad física. Cada una tiene sus propios usos, ventajas y limitaciones. A continuación se detallan las diferencias clave entre ambas.
+
+- [6.1. Copia de Seguridad Lógica](tema01/README.md)
+- [6.2. Copia de Seguridad Física](tema02/README.md)
+- [6.3. Restauración de Datos](tema03/README.md)
+- [6.4. Etrategias de Recuperación](tema04/README.md)
 
 [`Anterior`](../README.md) | [`Siguiente`](circulo_estudio/README.md)

@@ -43,4 +43,4 @@ Vayamos a la quita parte de la solución:
 **¡Con esto finalizamos nuestro círculo de estudio!** :clap:
 
 
-[`Anterior`](../reto04/README.md) | [`Siguiente`](../../../sesion06/README.md)
+[`Anterior`](../reto04/README.md) | [`Siguiente`](../../tema01/README.md)
