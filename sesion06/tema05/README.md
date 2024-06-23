@@ -24,4 +24,4 @@ Elegir el método adecuado dependerá de las necesidades específicas de tu ento
 
 <br/>
 
-[`Anterior`](../tema04/ejemplo03/README.md) | [`Siguiente`](#)
+[`Anterior`](../tema04/ejemplo03/README.md) | [`Siguiente`](../../sesion07/README.md)
