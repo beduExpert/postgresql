@@ -25,5 +25,3 @@ En este repositorio colocaremos todo el material necesario para ir construyendo 
 - [Sesión 08: Alta Disponibilidad y Replicación](sesion08/README.md)
 - [Sesión 09: Monitoreo y Mantenimiento Proactivo](sesion09/README.md)
 - [Sesión 10: Actualizaciones y Migraciones en PostgreSQL](sesion10/README.md)
-
-[`Siguiente >`](sesion01/README.md)
