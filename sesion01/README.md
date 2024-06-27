@@ -111,8 +111,7 @@ PostgreSQL es una opción poderosa y flexible para la gestión de bases de datos
 
 ---
 
-<details>
-<summary><strong><h3>Creación de un Repositorio</h3></strong></summary>
+<details><summary><strong><h3>Creación de un Repositorio</h3></strong></summary>
 <br/>
 
 Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
