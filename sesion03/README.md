@@ -1,410 +1,135 @@
 [`PostgreSQL Avanzado`](../README.md)
 
-## Sesión 03: Herramientas y Utilidades (PSQL y PgAdmin4)
+# Sesión 03: Herramientas y Utilidades (PSQL & PgAdmin 4)
 
-### 🌿 Presentación 
+## 🌿 Introducción
 
-Esta sesión te guiará a través del proceso de instalación y configuración de PostgreSQL y PgAdmin4. Además, te enseñaremos el uso de PSQL, la interfaz de línea de comandos, y PgAdmin4, una herramientas gráfica de administración para realizar tareas básicas y avanzadas.
+Las herramientas y utilidades son fundamentales para la administración eficaz de PostgreSQL. En esta sesión, exploraremos la instalación y configuración de PostgreSQL y PgAdmin 4, el uso de PSQL como interfaz de línea de comandos y una introducción a PgAdmin 4 para la administración de bases de datos. Este conocimiento te permitirá gestionar y optimizar tus sistemas PostgreSQL con mayor eficacia.
 
-### 🎯 Objetivo
+## 🎯 Objetivos Generales
 
-Instalar y configurar PostgreSQL y PgAdmin4, y aprender a utilizar las herramientas básicas para la administración y ejecución de comandos SQL.
+1. Aprender a instalar y configurar PostgreSQL y PgAdmin 4 en Windows.
+2. Dominar el uso de PSQL para la administración y ejecución de comandos SQL.
+3. Conocer la interfaz de usuario y las funcionalidades básicas de PgAdmin 4.
 
-### 👨‍💻 Hands-on para iniciar
+## 📚 Temario
 
-<details>
-<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Instalaciones</strong><br/></summary>
+### Temario
+
+1. **Instalación de PostgreSQL y PgAdmin 4**
+      - Instalación en Windows
+      - Configuración inicial
+      - [Tutorial de instalación de PostgreSQL y PgAdmin 4 en Windows](https://www.postgresql.org/download/windows/)
+
+2. **Uso de PSQL (Interfaz de Línea de Comandos)**
+      - Comandos básicos y avanzados
+      - Ejecución de scripts SQL
+
+3. **Introducción a PgAdmin 4**
+      - Interfaz de usuario
+      - Navegación y administración básica
+
+## 🚀 Desarrollo
+
+---
+
+<details><summary><h3>Instalación de PostgreSQL y PgAdmin 4</h3></summary>
 <br/>
 
-#### Objetivo
-Instalar PostgreSQL 16 y pgAdmin4 en un sistema operativo Windows de manera correcta y configurar las bases de datos básicas.
+#### Instalación en Diferentes Sistemas Operativos
 
-#### Materiales Necesarios:
-- Computadora con sistema operativa Windows (versión 7 en adelante).
-- Conexión a Internet
-- Permisos de administración en el sistema.
+PostgreSQL y PgAdmin 4 pueden ser instalados en múltiples sistemas operativos como Windows, macOS y Linux. Este subtema cubre los pasos específicos para cada sistema operativo.
 
-#### Tiempo Estimado: 
-30-45 minutos.
+- Descargar los instaladores desde los sitios oficiales y seguir las instrucciones del asistente de instalación.
+  - [Tutorial de instalación de PostgreSQL y PgAdmin 4 en Windows](https://www.postgresql.org/download/windows/)
 
-#### Instrucciones paso a paso
+#### Configuración Inicial
 
-1. Abrir el navegador:
-   - Abre tu navegador de preferencia (Chrome, Firefox, Edge, etc.).
-  
-2. Ir a la página oficinal:
-   - Navega a la página oficial de PostgreSQL:   
-      [https://www.postgresql.org/download/windows/](https://www.postgresql.org/download/windows/)
+Una vez instalados, es esencial realizar la configuración inicial para asegurar que PostgreSQL y PgAdmin 4 funcionen correctamente.
 
-3. Seleccionar la versión:
-   - En la sección de descarga para Windows, selecciona PostgreSQL 16.
+- **PostgreSQL**: Crear un superusuario y una base de datos inicial.
+- **PgAdmin 4**: Configurar el acceso al servidor PostgreSQL, establecer contraseñas y ajustar configuraciones de seguridad.
 
-5. Descargar el instalador:
-   - Haz clic en el botón de descarga y selecciona el instalador para Windows (x86-64).
-   - Guarda el archivo en una ubicación de fácil acceso en tu computadora.
- 
-6. Ejecutar el instalador:
-   - Navega hasta la ubicación donde descargaste el archivo y haz doble clic en el instalador (`postgresql-16.x-windows-x64.exe`).
-  
-7. Iniciar el proceso de instalación:
-   - En la ventana de bienvenida, haz clic en "Next" (Siguiente).
-  
-8. Seleccionar la ruta de instalación:
-   - Elige la ubicación donde deseas instalar PostgreSQL (por defecto es `C:\Program Files\PostgreSQL\16`).
-   - Haz clic en "Next" (Siguiente).
-  
-9. Seleccionar componentes:
-   - Deja seleccionados todos los componentes necesarios por PostgreSQL.
-   - Si pgAdmin no está incluido, procede sin seleccionarlo. Lo instalaremos en otro paso.
-   - Haz clic en "Next" (Siguiente).
-  
-10. Elegir directorio de datos:
-   - Elige la ubicación del directorio de datos donde PostgreSQL almacenará las bases de datos (por defecto es `C:\Program Files\PostgreSQL\16\data`).
-   - Haz clic en "Next" (Siguiente).
 
-11. Configurar constraseña del Superusuario (postgres):
-   - Ingresa una constraseña segura para el usuario `postgres`.
-   - Confirma la contraseña y haz clic en "Next" (Siguiente).
-
-12. Configurar puerto:
-   - El puerto por defecto es `5432`. Puedes dejarlo así a menos que necesites cambiarlo.
-   - Haz clic en "Next" (Siguiente)
-
-13. Seleccionar región y codificación
-   - Deja las opciones por defecto (región en `default` y codificación en `UTF-8`).
-   - Haz clic en "Next" (Siguiente).
-
-14. Finalizar la instalación
-   - Revisa la configuración y haz clic en "Next" (Siguiente) y luego en "Finish" (Finalizar).
-
-15. Ir a la página de descargas de pgAdmin:
-   - Navega a la página de descarga de pgAdmin: [https://www.pgadmin.org/download/](https://www.pgadmin.org/download/).
-
-16. Seleccionar la versión de Windows:
-   - Haz clic en la opción para descargar pgAdmin para Windows.
-
-17. Descargar el instalador:
-   - Descarga el instalador de pgAdmin 4 y guarda el archivo en una ubicación de fácil acceso en tu computadora.
-
-18. Ejecutar el instalador:
-   - Navega hasta la ubicación donde descargaste el archivo y haz doble clic en el instalador (`pgadmin4-x.x-x86.exe`).
-
-19. Iniciar el proceso de instalación:
-   - En la ventana de bienvenida, haz cic en "Next" (Siguiente).
-
-20. Aceptar el acuerdo de licencia:
-   - Lee y acepta el acuerdo de licencia, luego haz clic en "Next" (Siguiente).
-
-21. Seleccionar la ruta de instalación:
-   - Elige la ubicación donde deseas instalar pgAdmin 4 (por defecto es `C:\Program Files\pgAdmin 4`).
-   - Haz clic en "Next" (Siguiente).
-
-22. Seleccionar el tipo de instalación:
-   - Elige "Full" (Completa) para instalación instalar todas las características de pgAdmin 4.
-   - Haz clic en "Next" (Siguiente)
-
-23. Finalizar la instalación:
-   - Revisa la configuración y haz clic en "Install" (Instalar).
-   - Una vez completada la instalación, haz clic en "Finish" (Finalizar).
-
-24. Abrir pgAdmin 4:
-   - Ve al menú de inicio de Windows y busca `pgAdmin 4`.
-   - Abre la aplicación pgAdmin 4.
-
-25. Conectar al servidor:
-   - En pgAdmin 4, haz clic en "Servers" y luego "PostgreSQL 16".
-   - Ingresa la contraseña del usuario `postgres` que configuraste durante la instalación de PostgreSQL.
-
-26. Crear una base de datos de prueba:
-   - Haz clic derecho en `Databases` y selecciona `Create -> Database`.
-   - Ingresa un nombre para tu nueva base de datos y haz clic en `Save`.
-
-27. Verifica la base de datos:
-   - Expande el nodo de `Databases` para ver tu nueva base de datos y asegúrate de que esté listada correctamente.
-
-¡Felicidades! Ahora tienes PostgreSQL 16 y pgAdmin 4 instalados y configurados en tu sistema Windows. Puedes comenzar a crear y gestionar tus bases de datos utilizando pgAdmin 4 u otras herramientas de tu preferencia.
-
+<br/>
 </details>
 
-<details>
-<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Comandos básicos PSQL</strong><br/></summary>
+---
+
+<details><summary><h3>Uso de PSQL (Interfaz de Línea de Comandos)</h3></summary>
 <br/>
 
-#### Objetivo:
-Aprender a usar PSQL para gestionar bases de datos PostgreSQL mediante comandos básicos y avanzados.
+#### Comandos Básicos y Avanzados
 
-#### Materiales necesarios:
-- PostgreSQL 16 instalado en tu sistema Windows.
-- Acceso a una terminal o línea de comandos
-- Conexión a Internet (opcional para consultar documentación).
+PSQL es la interfaz de línea de comandos de PostgreSQL, poderosa y versátil. Este subtema cubre los comandos básicos y avanzados que se utilizan en la administración diaria.
 
-#### Tiempo estimado:
-45-60 minutos.
+- **Comandos Básicos**: 
+  - `\c` para conectar a una base de datos.
+  - `\dt` para listar tablas.
+  - `\d` para describir objetos.
+- **Comandos Avanzados**: 
+  - `\timing` para medir el tiempo de ejecución de las consultas.
+  - `\watch` para repetir comandos a intervalos regulares.
 
-#### Instrucciones paso a paso
+#### Ejecución de Scripts SQL
 
-1. Abril la terminal o línea de comandos
-   - Abre `cmd` o `PowerShell`
+PSQL permite la ejecución de scripts SQL, lo que facilita la automatización de tareas y la administración eficiente.
 
-2. Conectar a PostgreSQL con PSQL
-   - Ejecuta el siguiente comando reemplazando `username` con tu nombre de usuario PostgreSQL y `dbname` con el nombre de la base de datos a la que quieras conectarte:
-      ```sql
-      psql -U username -d dbname
-      ```
+- **Comando `\i`**: Utilizado para ejecutar scripts SQL desde un archivo.
+- **Redirección de Salida**: Guardar los resultados de las consultas en archivos.
 
-   - Si estás utilizando la base de datos `postgres` y el usuario `postgres`, el comando sería:
-      ```sql
-      psql -U postgres -d postgres
-      ```
 
-3. Ingresar la contraseña:
-   - Se te pedirá que ingreses la contraseña del usuario `postgres`. Escríbela y presiona `Enter`.
 
-4. Listar bases de datos:
-   - Para ver todas las bases de datos disponibles, usa:
-      ```sql
-      \l
-      ```
-5. Conectarse a una base de datos:
-   - Para cambiar a otra base de datos, usa:
-     ```sql
-     \c dbname
-     ```
-
-6. Listar tablas:
-   - Para ver todas las tablas en la base de datos actual, usa:
-      ```sql
-      \dt
-      ```
-
-7. Salir de PSQL:
-   - Para salir del cliente PSQL usa:
-      ```sql
-      \q
-      ```
-
-8. Crear una tabla:
-   - Crear una tabla simple llamada `empleados`:
-      ```sql
-      CREATE TABLE empleados (
-         id SERIAL PRIMARY KEY,
-         nombre VARCHAR(100),
-         puesto VARCHAR(100),
-         salario NUMERIC
-      );
-      ```
-
-9. Insertar datos en la tabla `empleados`:
-   ```sql
-   INSERT INTO empleados (nombre, puesto, salario) VALUES 
-   ('Juan Pérez', 'Gerente', 50000),
-   ('Ana Gómez', 'Desarrollador', 40000),
-   ('Luis García', 'Diseñador', 35000);
-   ```
-
-10. Consultar todos los registros de la tabla `empleados`:
-   ```sql
-   SELECT * FROM empleados;
-   ```
-
-11. Actualizar el salario de un empleado:
-   ```sql
-   UPDATE empleados SET salario = 45000 WHERE nombre = 'Ana Gómez';
-   ```
-
-12. Eliminar un registro de la tabla `empleados`:
-   ```sql
-   DELETE FROM empleados WHERE nombre = 'Luis Garcia';
-   ```
-
-13. Ver la estructura de la tabla `empleados`:
-   ```sql
-   \d empleados
-   ```
-
-14. Exportar los datos de `empleados`a un archivo CSV:
-   ```sql
-    \COPY empleados TO 'empleados.csv' CSV HEADER;
-   ```
-
-15. Importar datos desde un archivo CSV a la tabla `empleados`:
-   ```sql
-   \COPY empleados FROM 'empleados.csv' CSV HEADER;
-   ```
-
-16. Iniciar una transacción, realizar cambios y confirmar:
-   ```sql
-   BEGIN;
-   INSERT INTO empleados (nombre, puesto, salario) VALUES ('Carlos Ruiz', 'Analista', 42000);
-   COMMIT;
-   ```
-
-17. Obtener ayuda sobre los comandos disponibles:
-   ```sql
-   \?
-   ```
-
-18. Ver las variables de configuración actuales:
-   ```sql
-   SHOW ALL;
-   ``
-
-19. Ejecutar comandos SQL desde un archivo:
-   ```sql
-   \i ruta/al/archivo.sql
-   ```
-
-#### Conclusión
-¡Felicidades! Ahora sabes cómo utilizar PSQL para gestionar bases de datos PostgreSQL. Has aprendido a conectarte, navegar, crear tablas, insertar y consultar datos, y utilizar comandos avanzados. Practica estos comandos regularmente para mejorar tu habilidad con PSQL y gestionar tus bases de datos de manera eficiente.
-
+<br/>
 </details>
 
-<details>
-<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Uso básico de pgAdmin 4</strong><br/></summary>
+---
+
+<details><summary><h3>Introducción a PgAdmin 4</h3></summary>
 <br/>
 
-#### Objetivo
-Aprender a usar pgAdmin 4 para gestionar bases de datos PostgreSQL mediante la interfaz gráfica.
+#### Interfaz de Usuario
 
-#### Materiales Necesarios
-- PostgreSQL 16 y pgAdmin 4 instalados en tu sistema Windows
-- Conexión a Internet (opcional para consultar documentación)
+PgAdmin 4 es una herramienta gráfica de administración de bases de datos. Conocer su interfaz de usuario es esencial para una administración eficaz.
 
-#### Tiempo Estimado:
-45-60 minutos.
+- **Panel de Navegación**: Explorar las bases de datos, esquemas, tablas y otros objetos.
+- **Panel de Propiedades**: Ver y editar las propiedades de los objetos seleccionados.
 
-#### Instrucciones pasos a paso
+#### Navegación y Administración Básica
 
-1. Abrir pgAdmin 4:
-   - Inicia pgAdmin 4 desde el menú de inicio de Windows.
-  
-2. Conectarse al servidor PostgreSQL:
-   - En el panel izquierdo, haz clic derecho en "Servers" y selecciona "Create" -> "Server...".
-   - En la pestaña "General", ingresa un nombre para el servidor (por ejemplo, `PostgreSQL16`).
-   - En la pestaña "Connection",, ingresa los detalles de conexión:
-      - **Host name/address: `localhost`**
-      - **Port: `5432`**
-      - **Username: `postgres`**
-      - **Password:** ingresa la contraseña que configuraste durante la instalación.
-   - Haz clic en "Save" para conectar.
-  
-3. Crear una nueva base de datos:
-   - En el panel izquierdo, expande el servidor que acabas de crear.
-   - Haz clic derecho en "Databases" y selecciona "Create" -> "Database...".
-   - En la ventana emergente, ingresa el nombre de la base de datos (por ejemplo `empresa`).
-   - Haz clic en "Save".
-  
-4. Crear tabla `departamentos`:
-   - Expande la base de datos `empresa`, luego expande "Schemas" -> "public" -> "Tables".
-   - Haz clic derecho en "Tables" y  selecciona "Create" -> "Table..."
-   - En la pestaña "General", ingresa el nombre de la tabla (`departamentos`).
-   - En la pestaña "Columns", define las columnas:
-      - **id**: SERIAL, Primary Key.
-      - **nombre:** VARCHAR(100), NOT NULL.
-      - **ubicacion:** VARCHAR(100).
-   - Haz clic en "Save".
-  
-5. Crear tabla `empleados`:
-   - Repite los pasos anteriores para crear la tabla `empleados` con las siguientes columnas:
-      - **id:** SERIAL, Primary Key.
-      - **nombre:** VARCHAR(100), Not NULL.
-      - **puesto:** VARCHAR(100), Not NULL.
-      - **salario:** NUMERIC, Check (salario > 0).
-      - **departamento_id**: INTEGER, Foreign Key (References departamentosd(id)).
-    
-6. Insertar Datos en `departamentos`:
-   - En el panel izquierdo, expander la tabla `departamentos`.
-   - Haz clic derecho en "Query Tool" y usa el siguiente comando para insertar datos:
-      ```sql
-      INSERT INTO departamentos (nombre, ubicacion) VALUES 
-      ('Recursos Humanos', 'Edificio A'),
-      ('Tecnología', 'Edificio B'),
-      ('Ventas', 'Edificio C');
-      ```
+PgAdmin 4 permite realizar una amplia gama de tareas de administración de bases de datos de manera intuitiva.
 
-7. Insertar Datos en `empleados`:
-   - Repite el proceso en la tabla `empleados` con el siguiente comando:
-      ```sql
-      INSERT INTO empleados (nombre, puesto, salario, departamento_id) VALUES 
-      ('Juan Pérez', 'Gerente', 50000, 1),
-      ('Ana Gómez', 'Desarrollador', 40000, 2),
-      ('Luis García', 'Vendedor', 35000, 3);
-      ```
+- **Creación de Bases de Datos**: Crear y configurar nuevas bases de datos.
+- **Gestión de Usuarios y Roles**: Crear y gestionar usuarios y roles.
+- **Ejecución de Consultas SQL**: Usar el editor de consultas para ejecutar y analizar consultas SQL.
 
-8. Consultar datos de `empleados`:
-   - Abre la "Query Tool" para la tabla `empleados`y ejecuta el siguiente comando:
-      ```sql
-      SELECT * FROM empleados;
-      ```
-9. Unir tablas `empleados` y `departamentos`:
-   - En la "Query Tool", ejecuta el siguiente comando para ver los empleados junto con sus departamentos:
-      ```sql
-      SELECT e.nombre AS empleado, e.puesto, e.salario, d.nombre AS departamento, d.ubicacion
-      FROM empleados e
-      JOIN departamentos d ON e.departamento_id = d.id;
-      ```
-
-10. Agregar una columna a `empleados`:
-   - En la tabla `empleados`, haz clic derecho y selecciona "Properties".
-   - En la pestaña "Columns", agrega una nueva columna `fecha_contractacion` de tipo `DATE`.
-   - Haz clic en "Save".
-
-11. Actualizar datos de `empleados`:
-   - En la "Query Tool", ejecuta los siguientes comandos para actualizar las fechas de contratación:
-      ```sql
-      UPDATE empleados SET fecha_contratacion = '2023-01-15' WHERE nombre = 'Juan Pérez';
-      UPDATE empleados SET fecha_contratacion = '2023-02-20' WHERE nombre = 'Ana Gómez';
-      UPDATE empleados SET fecha_contratacion = '2023-03-05' WHERE nombre = 'Luis García';
-      ```
-
-12. Iniciar una transacción:
-   - En la "Query Tool", ejecuta el siguiente comando: 
-      ```sql
-      BEGIN;
-      ```
-
-13. Realizar operaciones:
-   - Inserta un nuevo empleado:
-      ```sql
-      INSERT INTO empleados (nombre, puesto, salario, departamento_id, fecha_contratacion) VALUES ('Carlos Ruiz', 'Analista', 42000, 1, '2023-04-01');
-      ```
-
-   - Si decides deshacer la transacción:
-      ```sql
-      ROLLBACK;
-      ```
-
-14. Configrmar transacción:
-   - Si todo está correcto:
-      ```sql
-      COMMIT;
-      ```
-
-15. Crear una vista para empleados y departamentos:
-   - En la "Query Tool", ejecuta el siguiente comando:
-      ```sql
-      CREATE VIEW vista_empleados_departamentos AS
-      SELECT e.nombre AS empleado, e.puesto, e.salario, d.nombre AS departamento, d.ubicacion
-      FROM empleados e
-      JOIN departamentos d ON e.departamento_id = d.id;
-      ```
-
-16. Consultar la vista:
-   - Consulta la vista creada:
-      ```sql
-      SELECT * FROM vista_empleados_departamentos;
-      ```
-
-#### Conclusión:
-¡Felicidades! Ahora sabes cómo utilizar pgAdmin 4 para gestionar bases de datos PostgreSQL. Has aprendido a conectarte, crear bases de datos y tablas, insertar y consultar datos, modificar el diseño de la base de datos y utilizar transacciones para asegurar la integridad. Practica estos pasos regularmente para mejorar tu habilidad con pgAdmin 4 y gestionar tus bases de datos de manera eficiente.
-
+<br/>
 </details>
 
+---
+
+<details><summary><h3>Prácticas</h3></summary>
+<br/>
+
+- [Importando Datos desde CSV](dataset/README.md)
+- [PostgreSQL desde Roadmap](docker_postgres/README.md)
+- [Creación de esquemas desde PSQL](esquemas/README.md)
+- [Obtención de Datos](obtencion/README.md)
+
+<br/>
+</details>
+
+---
+
+### 💯 Conclusión
+
+El conocimiento de las herramientas y utilidades de PostgreSQL, como PSQL y PgAdmin 4, es fundamental para una administración eficiente de bases de datos. Esta sesión ha cubierto la instalación y configuración inicial de PostgreSQL y PgAdmin 4, el uso de PSQL para la ejecución de comandos SQL, y una introducción a la interfaz de usuario y funcionalidades básicas de PgAdmin 4. Con estas habilidades, los administradores de bases de datos estarán mejor equipados para gestionar y optimizar sus sistemas PostgreSQL, mejorando el rendimiento y la fiabilidad de sus bases de datos.
 
 ### 🤓 Proyecto Modular
 
-<details>
-<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Configuración del entorno SQL</strong><br/></summary>
+---
+
+<details><summary><h3>Configuración del entorno SQL</h3></summary>
 <br/>
 
 Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
@@ -425,12 +150,21 @@ Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de e
  
 #### :dart: Avance del Proyecto 3/10: Configuración del entorno SQL
 
-En esta tercera sesión te orientaremos en la configuración del entorno SQL para tu proyecto, con el fin de que puedas experimentar con algunas de las principales características de PostgreSQL.  
+En esta tercera sesión te orientaremos en la configuración de tu base de datos en blanco. 
 
 ⏰ Tiempo estimado: *60 minutos*
 
-1. Replicando el hands-on que revisamos durante la sesión, asegurate de tener todo configurado para cargar los datos de tu base. No te preocupes mucho por el diseño de momento, ya lo mejoraremos en la siguiente sesión.
+1. Instalar PostgreSQL y pgAdmin 4
+
+2. Crear un servidor de PostgreSQL
+
+3. Crear un esquema (base de datos)
+
+4. Comienza a plantearte cuáles serán las tablas que deberás cargar. Aunque no es necesario que las cargues de momento esto te será útil cuando comenzemos a trabajar con el material de la siguiente sesión.
+
 
 </details>
+
+---
 
 [`< Regresar`](../README.md)
