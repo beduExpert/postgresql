@@ -161,4 +161,4 @@ El mantenimiento preventivo implica realizar tareas regulares para prevenir prob
 
 ### 💯 Conclusión
 
-El monitoreo y mantenimiento proactivo de PostgreSQL es fundamental para asegurar la disponibilidad, el rendimiento y la integridad de los datos. Esta sesión ha cubierto las herramientas y técnicas necesarias para monitorear eficazmente PostgreSQL, realizar tareas de mantenimiento y automatizar tareas preventivas. Con este conocimiento, los administradores de bases de datos pueden asegurar que sus sistemas sean robustos, eficientes y capaces de manejar las demandas de las aplicaciones modernas.
+El monitoreo y mantenimiento proactivo de PostgreSQL es fundamental para asegurar la disponibilidad, el rendimiento y la integridad de los datos. Esta sesión	 ha cubierto las herramientas y técnicas necesarias para monitorear eficazmente PostgreSQL, realizar tareas de mantenimiento y automatizar tareas preventivas. Con este conocimiento, los administradores de bases de datos pueden asegurar que sus sistemas sean robustos, eficientes y capaces de manejar las demandas de las aplicaciones modernas.
