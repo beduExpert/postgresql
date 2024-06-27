@@ -1,78 +1,184 @@
 [`PostgreSQL Avanzado`](../README.md)
 
-## Sesión 04: Diseño de Bases de Datos en PostgreSQL
+# Sesión 04: Diseño de Bases de Datos en PostgreSQL
 
-### 🌿 Presentación 
+## 🌿 Introducción
 
-En esta sesión se profundiza en el diseño y modelado de bases de datos en PostgreSQL. Se cubrirá la creación de esquemas, tablas, relaciones y llaves, así como la implementación de índices y vistas para optimizar el rendimiento y la eficiencia de las consultas.
+El diseño eficiente de bases de datos es crucial para el rendimiento y la funcionalidad de las aplicaciones que las utilizan. Este curso avanzado de PostgreSQL se centra en el diseño de bases de datos, cubriendo desde el modelado de datos y la creación de esquemas hasta la implementación de relaciones, llaves y el uso de índices y vistas. Adquirirás habilidades avanzadas para diseñar y optimizar bases de datos en PostgreSQL, asegurando una estructura robusta y un acceso eficiente a los datos.
 
-### 🎯 Objetivo
+## 🎯 Objetivos Generales
 
-Aprender a diseñar bases de datos eficientemente en PostgreSQL, comprendiendo el modelado de datos, la creación de esquemas y la gestión de índices y vistas.
+1. Aprender a modelar datos y crear esquemas y tablas en PostgreSQL.
+2. Comprender y aplicar relaciones y llaves para mantener la integridad referencial.
+3. Conocer y utilizar índices y vistas para optimizar el rendimiento de las consultas.
 
-### 👨‍💻 Hands-on para iniciar
+## 📚 Temario
 
-<details>
-<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Modelado de datos</strong><br/></summary>
+### Temario
+
+1. **Modelado de Datos**
+      - Creación de esquemas y tablas
+      - Tipos de datos disponibles
+
+2. **Relaciones y Llaves**
+      - Llaves primarias y foráneas
+      - Integridad referencial
+
+3. **Índices y Vistas**
+      - Tipos de índices y su uso
+      - Creación y uso de vistas
+
+## 🚀 Desarrollo
+
+---
+
+<details><summary><h3>Modelado de Datos</h3></summary>
 <br/>
 
-#### Objetivo
-Crear esquemas y tablas, y comprender los tipos de datos disponibles en PostgreSQL.
+#### Creación de Esquemas y Tablas
 
-#### Materiales Necesarios:
-- PostgreSQL 16 y pgAdmin 4 instalados en tu sistema.
-- Conexión a Internet (opcional para consutlar documentación).
+El modelado de datos comienza con la creación de esquemas y tablas, que son la base de cualquier base de datos relacional. PostgreSQL ofrece una amplia gama de funcionalidades para definir estructuras de datos.
 
-#### Tiempo Estimado: 
+- **Esquemas**: Espacios de nombres que permiten organizar objetos de base de datos.
+  ```sql
+  CREATE SCHEMA mi_esquema;
+  ```
+- **Tablas**: Estructuras básicas para almacenar datos.
+  ```sql
+  CREATE TABLE mi_esquema.mi_tabla (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100),
+    edad INT
+  );
+  ```
+
+#### Tipos de Datos Disponibles
+
+PostgreSQL ofrece una gran variedad de tipos de datos que permiten definir con precisión los atributos de las tablas.
+
+- **Tipos de Datos Comunes**: 
+  - `INTEGER`, `SERIAL`, `BIGINT`
+  - `VARCHAR`, `TEXT`
+  - `DATE`, `TIMESTAMP`
+  - `BOOLEAN`
+- **Tipos de Datos Avanzados**: 
+  - `ARRAY`, `JSON`, `JSONB`
+  - `UUID`, `INET`, `CIDR`
 
 
-#### Instrucciones paso a paso
 
-**Paso 1: Abrir pgAdmin 4 y Conectarse al Servidor:**
-- Inicia pgAdmin 4 desde el menú de inicio de Windows.
-- Conéctate al servidor PostgreSQL:
-   - En el panel izquierdo, haz clic derecho en "Servers" y selecciona "Create" -> "Server..."
-   - En la pestaña "General", ingresa un nombre para el servidor.
-   - En la pestaña "Connection", ingresa los detalles de conexión.
-   - Haz clic en "Save".
- 
-**Paso 2: Crear un Nuevo Esquema:** 
-- Expande el servidor conectado y luego la base de datos predeterminada.
-- Haz clic derecho en "Schemas" y selecciona "Create" -> "Schema...".
-- En la ventana emergente, ingresa el nombre del esquema (por ejemplo, `empresa`) y haz clic en "Save".
-
-**Paso 3: Crear Tablas:**
-- Expande el esquema `empresa`, luego haz clic derecho en "Tables" y selecciona "Create" -> "Table...".
-- En la pestaña "General", ingresa el nombre de la tabla (`departamentos`).
-- En la pestaña "Columns", define las columnas:
-   - **id**: SERIAL, Primary Key.
-   - **nombre**: VARCHAR(100), Not NULL.
-   - **ubicacion**: VARCHAR(100)
-- Haz clic en "Save".
-- Repite el proceso para crear la tabla `empleados` con las siguientes columnas:
-   - **id**: SERIAL, Primary Key.
-   - **nombre**: VARCHAR(100), Not NULL.
-   - **puesto**: VARCHAR(100), Not NULL.
-   - **salario**: NUMERIC, Check (salario > 0).
-   - **departamento_id**: INTEGER, Foreign Key (References departamentos (id)).
-   - Haz clic en "Save".
-  
-
+<br/>
 </details>
 
+---
 
+<details><summary><h3>Relaciones y Llaves</h3></summary>
+<br/>
+
+#### Llaves Primarias y Foráneas
+
+Las llaves primarias y foráneas son esenciales para definir relaciones entre tablas y asegurar la integridad de los datos.
+
+- **Llaves Primarias**: Un identificador único para cada fila de una tabla.
+  ```sql
+  CREATE TABLE usuarios (
+    usuario_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100)
+  );
+  ```
+- **Llaves Foráneas**: Definen relaciones entre tablas y mantienen la integridad referencial.
+  ```sql
+  CREATE TABLE pedidos (
+    pedido_id SERIAL PRIMARY KEY,
+    usuario_id INT REFERENCES usuarios(usuario_id),
+    fecha DATE
+  );
+  ```
+
+#### Integridad Referencial
+
+La integridad referencial asegura que las relaciones entre tablas sean consistentes y correctas.
+
+- **Restricciones de Integridad Referencial**:
+  - `ON DELETE CASCADE`
+  - `ON UPDATE RESTRICT`
+
+
+
+<br/>
+</details>
+
+---
+
+<details><summary><h3>Índices y Vistas</h3></summary>
+<br/>
+
+#### Tipos de Índices y su Uso
+
+Los índices mejoran la velocidad de acceso a los datos y son esenciales para optimizar el rendimiento de las consultas.
+
+**Objetivo Específico:**
+- Conocer los diferentes tipos de índices y su uso en PostgreSQL.
+
+- **Índices Comunes**:
+  - `B-tree` (por defecto y más común)
+  - `Hash` (para igualdad)
+  - `GIN` y `GiST` (para búsqueda de texto y espacial)
+  ```sql
+  CREATE INDEX idx_nombre ON usuarios(nombre);
+  ```
+- **Mantenimiento de Índices**:
+  - Comando `REINDEX`
+  - Uso de `VACUUM`
+
+#### Creación y Uso de Vistas
+
+Las vistas proporcionan una manera de simplificar consultas complejas y mejorar la seguridad al limitar el acceso a ciertos datos.
+
+**Objetivo Específico:**
+- Aprender a crear y utilizar vistas en PostgreSQL.
+
+- **Creación de Vistas**:
+  ```sql
+  CREATE VIEW vista_usuarios AS
+  SELECT nombre, edad FROM usuarios WHERE edad > 18;
+  ```
+- **Uso de Vistas**: Consultas más simples y control de acceso a datos específicos.
+
+<br/>
+</details>
+
+---
+
+<details><summary><h3>Prácticas</h3></summary>
+<br/>
+
+- [Importando Datos desde CSV](dataset/README.md)
+- [PostgreSQL desde Roadmap](docker_postgres/README.md)
+- [Creación de esquemas desde PSQL](esquemas/README.md)
+- [Obtención de Datos](obtencion/README.md)
+
+<br/>
+</details>
+
+---
+
+### 💯 Conclusión
+
+El diseño eficiente de bases de datos es fundamental para el rendimiento y la escalabilidad de cualquier aplicación. Esta sesión ha proporcionado una comprensión profunda del modelado de datos, la implementación de relaciones y llaves, y el uso de índices y vistas en PostgreSQL. Con estas habilidades, los administradores y desarrolladores estarán mejor equipados para diseñar y optimizar bases de datos, garantizando estructuras robustas y acceso eficiente a los datos.
 
 ### 🤓 Proyecto Modular
 
-<details>
-<summary style= "background: ghostwhite; padding: 10px; border: 1px solid lightgray; margin: 0px;"><strong>Configuración del entorno SQL</strong><br/></summary>
+---
+
+<details><summary><h3>Configuración del entorno SQL</h3></summary>
 <br/>
 
 Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
 
 - [x] Creación de un repositorio   
 - [x] Obtención de datos   
-- [ ] Configuración del entorno SQL   
+- [x] Configuración del entorno SQL   
 - [ ] Diseño de la base de datos
 - [ ] Gestión de usuarios
 - [ ] Creando una copia de seguridad
@@ -84,14 +190,27 @@ Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de e
 
 ---
  
-#### :dart: Avance del Proyecto 3/10: Configuración del entorno SQL
+#### :dart: Avance del Proyecto 4/10: Diseño de la base de datos
 
-En esta tercera sesión te orientaremos en la configuración del entorno SQL para tu proyecto, con el fin de que puedas experimentar con algunas de las principales características de PostgreSQL.  
+##### Actividad
+
+- Diseñar el esquema de la base de datos.
 
 ⏰ Tiempo estimado: *60 minutos*
 
-1. Replicando el hands-on que revisamos durante la sesión, asegurate de tener todo configurado para cargar los datos de tu base. No te preocupes mucho por el diseño de momento, ya lo mejoraremos en la siguiente sesión.
+1. Definir las tablas necesarias y sus relaciones.
+
+2. Especificar los tipos de datos y las restricciones.
+
+3. Crear el esquema de la base de datos utilizando comandos SQL.
+
+##### Resultado Esperado:
+
+Un esquema de base de datos bien diseñado que incluya tablas, tipos de datos y relaciones.
+
 
 </details>
+
+---
 
 [`< Regresar`](../README.md)
