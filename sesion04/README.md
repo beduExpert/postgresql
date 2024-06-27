@@ -153,10 +153,7 @@ Las vistas proporcionan una manera de simplificar consultas complejas y mejorar 
 <details><summary><h3>Prácticas</h3></summary>
 <br/>
 
-- [Importando Datos desde CSV](dataset/README.md)
-- [PostgreSQL desde Roadmap](docker_postgres/README.md)
-- [Creación de esquemas desde PSQL](esquemas/README.md)
-- [Obtención de Datos](obtencion/README.md)
+- [Cómo conectar pgAdmin y PostgreSQL desde Docker](pgadmindocker/README.md)
 
 <br/>
 </details>
