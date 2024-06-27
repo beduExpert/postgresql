@@ -7,7 +7,7 @@ En este repositorio colocaremos todo el material necesario para ir construyendo 
 
 - Comprender la estructura y funcionamiento interno de **PostgreSQL**.
 - Realizar instalaciones y configuraciones adecuadas.
-- Utilizar la herramienta **PSQL **para ejecutar consultas y comandos avanzados.
+- Utilizar la herramienta **PSQL** para ejecutar consultas y comandos avanzados.
 - Utilizar **PgAdmin4** para la gestión gráfica de la base de datos.
 - Diseñar y optimizar esquemas de bases de datos.
 - Implementar estrategias de respaldo y recuperación.
