@@ -200,7 +200,7 @@ Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de e
 
 **Ejemplo**:
 
-```
+```sql
 CREATE USER analista WITH PASSWORD 'password123';
 CREATE ROLE readonly;
 
