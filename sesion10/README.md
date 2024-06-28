@@ -150,6 +150,8 @@ La validación asegura que los datos y el rendimiento cumplen con los requisitos
 
 Mantener PostgreSQL actualizado y gestionar migraciones efectivas son tareas esenciales para cualquier administrador de bases de datos. A través de este módulo, los adquirirás las habilidades necesarias para planificar, ejecutar y validar actualizaciones y migraciones, asegurando así la continuidad y eficiencia de sus sistemas de bases de datos.
 
+---
+
 <details><summary><h3>Migración de datos / Presentación del proyecto</h3></summary>
 <br/>
 
