@@ -26,4 +26,51 @@ En **PostgreSQL**, existen dos tipos principales de copias de seguridad: la copi
 - [6.4. Estrategias de Recuperación](tema04/README.md)
 - [6.5. Conclusión](tema05/README.md)
 
-[`Anterior`](../README.md) | [`Siguiente`](circulo_estudio/README.md)
+### 🤓 Proyecto Modular
+
+---
+
+<details><summary><h3>Creando una copia de seguridad</h3></summary>
+<br/>
+
+Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
+
+- [x] Creación de un repositorio   
+- [x] Obtención de datos   
+- [x] Configuración del entorno SQL   
+- [x] Diseño de la base de datos
+- [x] Gestión de usuarios
+- [ ] Creando una copia de seguridad
+- [ ] Optimizando consultas
+- [ ] Preparando un proceso de réplica y alta disponibilidad
+- [ ] Preparando el monitoreo
+- [ ] Migración de datos
+- [ ] Presentación del proyecto
+
+---
+ 
+#### :dart: Avance del Proyecto 6/10: Creando una copia de seguridad
+
+##### Actividad
+
+⏰ Tiempo estimado: *60 minutos*
+
+1. **Utilizar pg_dump para crear una copia de seguridad**:
+
+  - Ejecuta pg_dump para crear un backups de la base de datos.
+
+2. **Guardar el archivo de copia de seguridad en la carpeta `backup`**:
+
+  - Asegúrate de que la carpeta `backup` esté en tu repositorio.
+
+**Ejemplo**:
+
+```sh
+pg_dump -U postgres proyecto_db > backup/proyecto_db_backup.sql
+```
+
+</details>
+
+---
+
+[`< Regresar`](../README.md)
