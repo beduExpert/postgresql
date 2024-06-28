@@ -273,4 +273,47 @@ Existen varias soluciones de terceros que pueden mejorar la alta disponibilidad 
 
 La alta disponibilidad y la replicación son componentes esenciales para garantizar que las bases de datos PostgreSQL estén siempre disponibles y funcionen de manera eficiente. Este curso ha cubierto la configuración y gestión de la replicación, los clústeres y el balanceo de carga, así como las soluciones de terceros que pueden mejorar estas capacidades. Con este conocimiento, los administradores de bases de datos pueden asegurar que sus sistemas sean robustos, escalables y capaces de manejar las demandas de las aplicaciones modernas.
 
-[`Anterior`](../sesion07/tema04/README.md) | [`Siguiente`](tema01/README.md)
+### 🤓 Proyecto Modular
+
+---
+
+<details><summary><h3>Preparando un proceso de réplica y alta disponibilidad</h3></summary>
+<br/>
+
+Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
+
+- [x] Creación de un repositorio   
+- [x] Obtención de datos   
+- [x] Configuración del entorno SQL   
+- [x] Diseño de la base de datos
+- [x] Gestión de usuarios
+- [x] Creando una copia de seguridad
+- [x] Optimizando consultas
+- [ ] Preparando un proceso de réplica y alta disponibilidad
+- [ ] Preparando el monitoreo
+- [ ] Migración de datos
+- [ ] Presentación del proyecto
+
+---
+ 
+#### :dart: Avance del Proyecto 8/10: Optimizando consultas
+
+##### Actividad
+
+⏰ Tiempo estimado: *60 minutos*
+
+- Investiga y describe las opciones disponibles para la replicación y alta disponibilidad en PostgreSQL (por ejemplo, replicación síncrona y asíncrona).
+
+- Elabora un reporte detallando las ventajas y desventajas de cada opción.
+
+- Propón una configuración de replicación que se ajuste a las necesidades de tu proyecto.
+
+**Ejemplo**:
+
+- Redacta un documento en la carpeta `docs` que compare las opciones de replicación y justifique la elección de la configuración propuesta.
+
+</details>
+
+---
+
+[`< Regresar`](../README.md)
