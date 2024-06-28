@@ -149,3 +149,63 @@ La validación asegura que los datos y el rendimiento cumplen con los requisitos
 ### 💯 Conclusión
 
 Mantener PostgreSQL actualizado y gestionar migraciones efectivas son tareas esenciales para cualquier administrador de bases de datos. A través de este módulo, los adquirirás las habilidades necesarias para planificar, ejecutar y validar actualizaciones y migraciones, asegurando así la continuidad y eficiencia de sus sistemas de bases de datos.
+
+<details><summary><h3>Migración de datos / Presentación del proyecto</h3></summary>
+<br/>
+
+Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
+
+- [x] Creación de un repositorio   
+- [x] Obtención de datos   
+- [x] Configuración del entorno SQL   
+- [x] Diseño de la base de datos
+- [x] Gestión de usuarios
+- [x] Creando una copia de seguridad
+- [x] Optimizando consultas
+- [x] Preparando un proceso de réplica y alta disponibilidad
+- [x] Preparando el monitoreo
+- [ ] Migración de datos
+- [ ] Presentación del proyecto
+
+---
+ 
+#### :dart: Avance del Proyecto 9/10: Migración de datos
+
+##### Actividad
+
+⏰ Tiempo estimado: *60 minutos*
+
+- Investiga y describe las técnicas y herramientas disponibles para la migración de datos hacia PostgreSQL desde otros sistemas de gestión de bases de datos.
+- Elabora un reporte detallando los pasos y consideraciones importantes para realizar una migración exitosa.
+- Propón un plan de migración para tu proyecto.
+
+
+**Ejemplo**:
+
+- Redacta un documento en la carpeta docs que explique las técnicas de migración y proponga un plan de migración.
+
+---
+
+#### :dart: Avance del Proyecto 10/10: Presentación del proyecto
+
+##### Actividad
+
+⏰ Tiempo estimado: *60 minutos*
+
+- Prepara una presentación de 5 minutos que resuma el proyecto completo.
+- Incluye los objetivos, metodología, resultados y conclusiones.
+- Asegúrate de que la presentación sea clara y concisa, y que destaque los aspectos más importantes del proyecto.
+- Entrega el enlace al repositorio de GitHub con todos los puntos de la lista de cotejo completados.
+
+
+**Ejemplo**:
+
+- Usa herramientas como PowerPoint o Google Slides para crear la presentación.
+- Guarda el archivo de la presentación en formato PDF en la carpeta docs.
+- Comparte el enlace del repositorio y la presentación con el experto.
+
+</details>
+
+---
+
+[`< Regresar`](../README.md)
