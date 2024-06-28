@@ -162,3 +162,48 @@ El mantenimiento preventivo implica realizar tareas regulares para prevenir prob
 ### 💯 Conclusión
 
 El monitoreo y mantenimiento proactivo de PostgreSQL es fundamental para asegurar la disponibilidad, el rendimiento y la integridad de los datos. Esta sesión	 ha cubierto las herramientas y técnicas necesarias para monitorear eficazmente PostgreSQL, realizar tareas de mantenimiento y automatizar tareas preventivas. Con este conocimiento, los administradores de bases de datos pueden asegurar que sus sistemas sean robustos, eficientes y capaces de manejar las demandas de las aplicaciones modernas.
+
+### 🤓 Proyecto Modular
+
+---
+
+<details><summary><h3>Preparando el monitoreo</h3></summary>
+<br/>
+
+Con el fin de que puedas poner todo tu conocimiento en práctica a lo largo de este módulo se realizarán distintas actividades que te permitirán ir construyendo un proyecto de manera progresiva y de manera guiada por los expertos. Este proyecto será el entregable final de todo del módulo y se dividirá en las siguientes etapas:
+
+- [x] Creación de un repositorio   
+- [x] Obtención de datos   
+- [x] Configuración del entorno SQL   
+- [x] Diseño de la base de datos
+- [x] Gestión de usuarios
+- [x] Creando una copia de seguridad
+- [x] Optimizando consultas
+- [x] Preparando un proceso de réplica y alta disponibilidad
+- [ ] Preparando el monitoreo
+- [ ] Migración de datos
+- [ ] Presentación del proyecto
+
+---
+ 
+#### :dart: Avance del Proyecto 8/10: Optimizando consultas
+
+##### Actividad
+
+⏰ Tiempo estimado: *60 minutos*
+
+- Investiga y describe las herramientas disponibles para el monitoreo de PostgreSQL (por ejemplo, pg_stat, pgBadger).
+
+- Elabora un reporte detallando las métricas y alertas importantes que deben monitorearse.
+
+- Propón un plan de monitoreo adecuado para tu proyecto.
+
+**Ejemplo**:
+
+- Redacta un documento en la carpeta docs que explique las herramientas de monitoreo y proponga un plan de monitoreo.
+
+</details>
+
+---
+
+[`< Regresar`](../README.md)
